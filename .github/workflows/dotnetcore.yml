@@ -14,7 +14,9 @@ jobs:
       with:
         dotnet-version: 3.1.100
     - name: Build with dotnet
-      run: dotnet publish -r win-x64 -c Release --self-contained
+      run: dotnet publish -r win-x64 -c Release --self-contained -o public
+    - name: LS
+      run: ls
     - name: Deploy
       if: success()
       uses: crazy-max/ghaction-github-pages@v1
