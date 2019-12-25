@@ -17,6 +17,8 @@ jobs:
       run: dotnet publish -r win-x64 -c Release --self-contained -o FoldersSizeUtility
     - name: test
       run: cd /home/runner/work/FoldersSizeUtility/FoldersSizeUtility/bin/Release/netcoreapp3.1/win-x64/
+    - name: test2
+      run: ls
   # - name: Deploy
   #    if: success()
   #    uses: crazy-max/ghaction-github-pages@v1
