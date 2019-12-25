@@ -14,14 +14,16 @@ jobs:
       with:
         dotnet-version: 3.1.100
     - name: Build with dotnet
-      run: dotnet publish -r win-x64 -c Release --self-contained -o public
+      run: dotnet publish -r win-x64 -c Release --self-contained
     - name: LS
       run: ls
+    - name: LS2
+      run: ls FoldersSizeUtility
     - name: Deploy
       if: success()
       uses: crazy-max/ghaction-github-pages@v1
       with:
         target_branch: gh-pages
-        build_dir: .
+        build_dir: ./FoldersSizeUtility
       env:
         GITHUB_PAT: ${{ secrets.UTILS_GH_PAGES }}
