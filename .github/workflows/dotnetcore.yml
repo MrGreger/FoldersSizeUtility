@@ -18,12 +18,12 @@ jobs:
     - name: LS
       run: ls
     - name: LS2
-      run: ls bin
+      run: ls bin/Release/netcoreapp3.1/win-x64
     - name: Deploy
       if: success()
       uses: crazy-max/ghaction-github-pages@v1
       with:
         target_branch: gh-pages
-        build_dir: ./FoldersSizeUtility
+        build_dir: ./bin
       env:
         GITHUB_PAT: ${{ secrets.UTILS_GH_PAGES }}
