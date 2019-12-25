@@ -20,6 +20,6 @@ jobs:
       uses: crazy-max/ghaction-github-pages@v1
       with:
         target_branch: gh-pages
-        build_dir: /home/runner/work/FoldersSizeUtility/FoldersSizeUtility/bin/Release/netcoreapp3.1/win-x64/
+        build_dir: /home/runner/work/FoldersSizeUtility/FoldersSizeUtility/home/runner/work/FoldersSizeUtility/
       env:
         GITHUB_PAT: ${{ secrets.UTILS_GH_PAGES }}
