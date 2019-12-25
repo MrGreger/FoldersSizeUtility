@@ -16,7 +16,7 @@ jobs:
     - name: Build with dotnet
       run: dotnet publish -r win-x64 -c Release --self-contained -o FoldersSizeUtility
     - name: test
-      run: cd /home/runner/work/FoldersSizeUtility/bin/Release/netcoreapp3.1/win-x64/
+      run: cd /home/runner/work/FoldersSizeUtility/FoldersSizeUtility/bin/Release/netcoreapp3.1/win-x64/
     - name: test2
       run: ls
   # - name: Deploy
