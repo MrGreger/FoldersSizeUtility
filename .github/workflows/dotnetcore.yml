@@ -16,4 +16,10 @@ jobs:
     - name: Build with dotnet
       run: dotnet publish -r win-x64 -c Release --self-contained -o FoldersSizeUtility
     - name: Deploy
-      run: dotnet --version
+      if: success()
+      uses: crazy-max/ghaction-github-pages@v1
+      with:
+        target_branch: gh-pages
+        build_dir: /home/runner/work/FoldersSizeUtility/FoldersSizeUtility/bin/Release/netcoreapp3.1/win-x64/
+      env:
+        GITHUB_PAT: ${{ secrets.utils-gh-pages }}
