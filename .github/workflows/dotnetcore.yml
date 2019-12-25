@@ -14,11 +14,11 @@ jobs:
       with:
         dotnet-version: 3.1.100
     - name: Build with dotnet
-      run: dotnet publish -r win-x64 -c Release --self-contained
+      run: dotnet publish -r win-x64 -c Release --self-contained /p:PublishSingleFile=true
     - name: LS
       run: ls
     - name: LS2
-      run: ls FoldersSizeUtility
+      run: ls bin
     - name: Deploy
       if: success()
       uses: crazy-max/ghaction-github-pages@v1
