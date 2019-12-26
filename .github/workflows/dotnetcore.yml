@@ -22,7 +22,7 @@ jobs:
       with:
         args: zip -qq -r ./bin/Release/netcoreapp2.1/win-x64/publish/deploy/release.zip ./bin/Release/netcoreapp2.1/win-x64/publish
     - name: test
-      run: ls bin/Release/netcoreapp2.1/win-x64/publish
+      run: ls bin/Release/netcoreapp2.1/win-x64
     - name: CopyIndex
       run: mv bin/Release/netcoreapp2.1/win-x64/publish/index.html bin/Release/netcoreapp3.1/win-x64/publish/deploy/index.html
     - name: Deploy
