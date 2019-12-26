@@ -16,9 +16,8 @@ jobs:
     - name: Build with dotnet
       run: dotnet publish -r win-x64 -c Release --self-contained
     - uses: actions/checkout@master
-    - uses: montudor/action-zip@v0.1.0
     - name: Archive Release
-      run: mkdir bin/Release/netcoreapp2.1/win-x64/publish/deploy
+      run: mkdir -p bin/Release/netcoreapp2.1/win-x64/publish/deploy
     - uses: montudor/action-zip@v0.1.0
       with:
         args: zip -qq -r ./bin/Release/netcoreapp2.1/win-x64/publish/deploy/release.zip ./bin/Release/netcoreapp2.1/win-x64/publish
