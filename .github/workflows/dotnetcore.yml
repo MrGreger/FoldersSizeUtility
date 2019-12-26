@@ -25,3 +25,10 @@ jobs:
         build_dir: ./bin/Release/netcoreapp3.1/win-x64/publish
       env:
         GITHUB_PAT: ${{ secrets.UTILS_GH_PAGES }}
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+          files: bin/Release/netcoreapp3.1/win-x64/publish/FoldersSizeUtility.exe
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
