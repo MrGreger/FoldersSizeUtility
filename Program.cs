@@ -57,8 +57,13 @@ namespace FoldersSizeUtility
             Console.ReadLine();
         }
 
+        private static object sync = new object();
+
         private static void HandleFolderScanCompleted(int totalFolders, int completedFolders)
         {
+            lock (sync)
+            {
+
                 Console.CursorVisible = false;
                 var cursorTop = Console.CursorTop;
                 for (int i = Console.BufferWidth - 1; i >= 0; i--)
@@ -69,6 +74,7 @@ namespace FoldersSizeUtility
 
                 Console.Write($"{((float)completedFolders / totalFolders) * 100}%");
                 Console.CursorVisible = true;
+            }
         }
     }
 }

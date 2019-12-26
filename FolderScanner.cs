@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace FoldersSizeUtility
@@ -76,11 +77,8 @@ namespace FoldersSizeUtility
 
         private void OnProgressChanged(int totalProgress, ref int curProgress)
         {
-            lock (sync)
-            {
-                curProgress++;
-                ProgressChanged?.Invoke(totalProgress, curProgress);
-            }
+            Interlocked.Increment(ref curProgress);
+            ProgressChanged?.Invoke(totalProgress, curProgress);
         }
     }
 }
