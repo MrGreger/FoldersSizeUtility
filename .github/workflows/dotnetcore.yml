@@ -20,7 +20,7 @@ jobs:
       uses: thedoctor0/zip-release@master
       with:
         filename: 'release.zip'
-        path: ./bin/Release/netcoreapp2.1/win-x64/publish
+        path: bin/Release/netcoreapp2.1/win-x64/publish
         exclusions: index.html
     - name: CreateDeployDir
       run: mkdir bin/Release/netcoreapp2.1/win-x64/publish/deploy
