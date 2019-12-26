@@ -15,15 +15,13 @@ jobs:
         dotnet-version: 3.1.100
     - name: Build with dotnet
       run: dotnet publish -r win-x64 -c Release /p:PublishSingleFile=true
-    - name: LS
-      run: ls
-    - name: LS2
-      run: ls bin/Release/netcoreapp3.1/win-x64
+    - name: CopyIndex
+      run: mv bin/Release/netcoreapp3.1/win-x64/index.html bin/Release/netcoreapp3.1/win-x64/publish/index.html
     - name: Deploy
       if: success()
       uses: crazy-max/ghaction-github-pages@v1
       with:
         target_branch: gh-pages
-        build_dir: ./bin/Release/netcoreapp3.1/win-x64
+        build_dir: ./bin/Release/netcoreapp3.1/win-x64/publish
       env:
         GITHUB_PAT: ${{ secrets.UTILS_GH_PAGES }}
