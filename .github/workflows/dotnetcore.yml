@@ -15,6 +15,8 @@ jobs:
         dotnet-version: 2.1.607
     - name: Build with dotnet
       run: dotnet publish -r win-x64 -c Release --self-contained
+    - name: test
+      run: ls bin/Release/netcoreapp2.1/win-x64/publish
     - uses: actions/checkout@master
     - name: Archive Release
       uses: thedoctor0/zip-release@master
@@ -22,8 +24,6 @@ jobs:
         filename: 'release.zip'
         path: FoldersSizeUtility/bin/Release/netcoreapp2.1/win-x64/publish
         exclusions: index.html
-    - name: test
-      run: ls bin/Release/netcoreapp2.1/win-x64/publish
     - name: CreateDeployDir
       run: mkdir bin/Release/netcoreapp2.1/win-x64/publish/deploy
     - name: CopyIndex
