@@ -17,11 +17,9 @@ jobs:
       run: dotnet publish -r win-x64 -c Release --self-contained
     - uses: actions/checkout@master
     - name: Archive Release
-      uses: thedoctor0/zip-release@master
+    - uses: montudor/action-zip@v0.1.0
       with:
-        filename: 'release.zip'
-        path: bin/Release/netcoreapp2.1/win-x64/publish
-        exclusions: index.html
+        args: unzip -qq bin/Release/netcoreapp2.1/win-x64/publish/deploy/dir.zip -d ./bin/Release/netcoreapp2.1/win-x64/publish
     - name: CreateDeployDir
       run: mkdir bin/Release/netcoreapp2.1/win-x64/publish/deploy
     - name: CopyIndex
