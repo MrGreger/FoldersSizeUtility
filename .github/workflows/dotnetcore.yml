@@ -19,7 +19,7 @@ jobs:
     - name: Archive Release
       uses: thedoctor0/zip-release@master
       with:
-        filename: './bin/Release/netcoreapp2.1/win-x64/publish/deploy/release.zip'
+        filename: 'release.zip'
         path: ./bin/Release/netcoreapp2.1/win-x64/publish
         exclusions: index.html
     - name: CreateDeployDir
