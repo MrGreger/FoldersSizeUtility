@@ -14,21 +14,30 @@ jobs:
       with:
         dotnet-version: 2.1.607
     - name: Build with dotnet
-      run: dotnet publish -r win-x64 -c Release /p:PublishSingleFile=true
+      run: dotnet publish -r win-x64 -c Release --self-contained
+    - uses: actions/checkout@master
+    - name: Archive Release
+      uses: thedoctor0/zip-release@master
+      with:
+        filename: 'bin/Release/netcoreapp2.1/win-x64/publish/deploy/release.zip'
+        path: bin/Release/netcoreapp2.1/win-x64/publish
+        exclusions: index.html
+    - name: CreateDeployDir
+      run: mkdir bin/Release/netcoreapp2.1/win-x64/publish/deploy
     - name: CopyIndex
-      run: mv bin/Release/netcoreapp3.1/win-x64/index.html bin/Release/netcoreapp3.1/win-x64/publish/index.html
+      run: mv bin/Release/netcoreapp2.1/win-x64/index.html bin/Release/netcoreapp3.1/win-x64/publish/deploy/index.html
     - name: Deploy
       if: success()
       uses: crazy-max/ghaction-github-pages@v1
       with:
         target_branch: gh-pages
-        build_dir: ./bin/Release/netcoreapp3.1/win-x64/publish
+        build_dir: ./bin/Release/netcoreapp2.1/win-x64/publish/deploy
       env:
         GITHUB_PAT: ${{ secrets.UTILS_GH_PAGES }}
     - name: Release
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
       with:
-          files: bin/Release/netcoreapp3.1/win-x64/publish/FoldersSizeUtility.exe
+          files: bin/Release/netcoreapp2.1/win-x64/publish/FoldersSizeUtility.exe
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
